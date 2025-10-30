@@ -11,23 +11,14 @@
 
 char *_strchr(char *s, char c)
 {
-int i;
-for (i = 0; i > sizeof(s); i++)
-{
-if (*s == c)
-{
-return (s - i);
-break;
-}
-else if (*s == '\0')
-{
-return (0);
-break;
-}
-else
-{
-s++;
-}
-}
+	while (*s)
+	{
+		if (*s == c)
+			return (s);
+		s++;
+	}
+	if (c == '\0')
+		return (s);
+	return (NULL);
 }
 
