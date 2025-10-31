@@ -23,10 +23,9 @@ int root_checker(int n, int x)
 */
 int _sqrt_recursion(int n)
 {
-	root_checker(n, 1);
 	if (n < 0)
 	{
 		return (-1);
 	}
+	return (root_checker(n, 1));
 }
-
