@@ -28,7 +28,7 @@ char *_strpbrk(char *s, char *accept)
 		}
 		if (i > 0)
 		{
-			if *s != *a
+			if (*s != *a)
 			{
 				return (s + i);
 			}
