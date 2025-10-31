@@ -1,1 +1,12 @@
-#include "main.h" 2-strlen_recursion.c 3-factorial.c 4-pow_recursion.c 5-sqrt_recursion.c 6-is_prime_number.c
+#include "main.h"
+/**
+* _print_rev_recursion - prints a string in reverse
+* @s: string to be printed
+*/
+void _print_rev_recursion(char *s);
+{
+	if (*s == '\0')
+		return;
+	_print_rev_recursion(s + 1);
+	_putchar(*s);
+}
