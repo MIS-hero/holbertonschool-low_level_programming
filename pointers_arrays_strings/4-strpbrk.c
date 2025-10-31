@@ -10,14 +10,15 @@
 char *_strpbrk(char *s, char *accept)
 {
 	unsigned int i = 0;
+	char *v = s;
 
-	while (*s != '\0')
+	while (*v != '\0')
 	{
 		char *a = accept;
 
 		while (*a != '\0')
 		{
-			if (*s == *a)
+			if (*v == *a)
 			{
 				i++;
 			}
@@ -28,13 +29,12 @@ char *_strpbrk(char *s, char *accept)
 		}
 		if (i > 0)
 		{
-			if (*s != *a)
+			if (*v != *a)
 			{
 				return (s + i);
 			}
 		}
-		s++;
+		v++;
 	}
 	return (0);
 }
-
