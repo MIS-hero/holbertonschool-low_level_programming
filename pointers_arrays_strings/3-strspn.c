@@ -25,7 +25,14 @@ unsigned int _strspn(char *s, char *accept)
 			}
 			a++;
 		}
-		s++;
+		if (*s == *a)
+		{
+			s++;
+		}
+		else
+		{
+			return (i);
+		}
 	}
 	return (i);
 }
