@@ -10,31 +10,23 @@
 char *_strpbrk(char *s, char *accept)
 {
 	unsigned int i = 0;
-	char *v = s;
 
-	while (*v != '\0')
+	while (*s != '\0')
 	{
 		char *a = accept;
 
 		while (*a != '\0')
 		{
-			if (*v == *a)
+			if (*s == *a)
 			{
-				i++;
+				return (s);
 			}
 			else
 			{
 				a++;
 			}
 		}
-		if (i > 0)
-		{
-			if (*v != *a)
-			{
-				return (s + i);
-			}
-		}
-		v++;
+		s++;
 	}
 	return (0);
 }
