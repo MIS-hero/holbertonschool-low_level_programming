@@ -8,6 +8,6 @@
  */
 int main(int argc, __attribute__((unused)) char *argv[])
 {
-	printf("%i\n", argc);
+	printf("%d\n", argc - 1);
 	return (0);
 }
