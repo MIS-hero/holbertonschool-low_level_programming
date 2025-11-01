@@ -3,7 +3,7 @@
  * _is_prime_helper - helper function to check for prime
  * @n: number to check
  * @divisor: current divisor to test
- *  
+ *
  * Return: 1 if n is prime, 0 otherwise
  */
 int _is_prime_helper(int n, int divisor)
