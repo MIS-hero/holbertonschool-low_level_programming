@@ -1,22 +1,28 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 /**
-* main - multiplies two integers
-* argc: argument count
-* argv: argument vector
-* result: product of multiplication
-*
-* Return: the product of a and b
-*/
+ * main - print its name
+ *
+ * @argc: an integer
+ * @argv: pointer to a char
+ *
+ * Return: Always 0 (Success)
+ */
+
 int main(int argc, char *argv[])
 {
+	int mul = 0;
 
-	if (argc != 3)
+	if (argc < 3)
 	{
-		printf("Error/n")
+		printf("Error\n");
 		return (1);
 	}
-	int result = *argv[1] * *argv[2];
-
-	printf("%d\n", result);
+	else
+	{
+		mul = atoi(argv[1]) * atoi(argv[2]);
+		printf("%d\n", mul);
+	}
+	return (0);
 }
