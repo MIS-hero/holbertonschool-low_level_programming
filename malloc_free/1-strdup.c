@@ -1,11 +1,11 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * _strdup - duplicates a string
- * @str: string to duplicate
- *
- * Return: pointer to the duplicated string, or NULL if it fails
- */
+* _strdup - duplicates a string
+* @str: string to duplicate
+*
+* Return: pointer to the duplicated string, or NULL if it fails
+*/
 
 char *_strdup(char *str)
 {
@@ -19,8 +19,10 @@ char *_strdup(char *str)
 		return (NULL);
 
 	while (*str != '\0')
+	{
 		length++;
 		str++;
+	}
 	newstring = malloc((length + 1) * sizeof(char));
 	if (newstring == NULL)
 		return (NULL);
