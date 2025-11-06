@@ -44,7 +44,6 @@ int main(void)
 		if (remain > max)
 		{
 			int r;
-			int upper_bound = max;
 			int allowed_max = remain - min; /* ensure remainder >= min after choosing r */
 
 			/* allowed_max might be larger than max; cap it */
