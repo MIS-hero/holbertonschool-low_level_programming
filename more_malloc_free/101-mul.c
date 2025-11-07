@@ -31,7 +31,7 @@ int length(char *s)
 /* Multiplies two positive numbers as strings */
 void mul(int argc, char *argv[])
 {
-    int len1, len2, i, j, mul_val, sum;
+    int len1, len2, i, j, mul_val, sum, *result;
 
     if (argc != 3 || !is_digits_only(argv[1]) || !is_digits_only(argv[2]))
     {
@@ -42,7 +42,7 @@ void mul(int argc, char *argv[])
     len1 = length(argv[1]);
     len2 = length(argv[2]);
 
-    int *result = calloc(len1 + len2, sizeof(int));
+    result = calloc(len1 + len2, sizeof(int));
     if (!result)
     {
         printf("Error\n");
