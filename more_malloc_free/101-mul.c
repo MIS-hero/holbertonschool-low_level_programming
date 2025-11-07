@@ -29,7 +29,7 @@ int length(char *s)
 }
 
 /* Multiplies two positive numbers as strings */
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     int len1, len2, i, j, mul_val, sum, *result;
 
