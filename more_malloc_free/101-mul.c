@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /**
- * is_digits_only - Checks if a string contains only digits
- * @s: The input string
- * Return: 1 if string contains only digits, 0 otherwise
- */
+* is_digits_only - Checks if a string contains only digits
+* @s: The input string
+* Return: 1 if string contains only digits, 0 otherwise
+*/
 int is_digits_only(char *s)
 {
 	int i = 0;
@@ -23,10 +23,10 @@ int is_digits_only(char *s)
 }
 
 /**
- * length - Returns the length of a string
- * @s: The input string
- * Return: Length of the string
- */
+* length - Returns the length of a string
+* @s: The input string
+* Return: Length of the string
+*/
 int length(char *s)
 {
 	int len = 0;
@@ -37,10 +37,10 @@ int length(char *s)
 }
 
 /**
- * check_args - Validates program arguments
- * @argc: Argument count
- * @argv: Argument vector
- */
+* check_args - Validates program arguments
+* @argc: Argument count
+* @argv: Argument vector
+*/
 void check_args(int argc, char *argv[])
 {
 	if (argc != 3 || !is_digits_only(argv[1]) || !is_digits_only(argv[2]))
@@ -51,15 +51,17 @@ void check_args(int argc, char *argv[])
 }
 
 /**
- * multiply_strings - Multiplies two positive numbers as strings
- * @num1: First number string
- * @num2: Second number string
- * @result: Array to store multiplication result
- */
+* multiply_strings - Multiplies two positive numbers as strings
+* @num1: First number string
+* @num2: Second number string
+* @result: Array to store multiplication result
+*/
 void multiply_strings(char *num1, char *num2, int *result)
 {
 	int len1 = length(num1);
+
 	int len2 = length(num2);
+
 	int i, j, mul, sum;
 
 	for (i = len1 - 1; i >= 0; i--)
@@ -75,10 +77,10 @@ void multiply_strings(char *num1, char *num2, int *result)
 }
 
 /**
- * print_result - Prints the result array as a number
- * @result: Array containing the number
- * @size: Size of the array
- */
+* print_result - Prints the result array as a number
+* @result: Array containing the number
+* @size: Size of the array
+*/
 void print_result(int *result, int size)
 {
 	int i = 0;
@@ -97,11 +99,11 @@ void print_result(int *result, int size)
 }
 
 /**
- * main - Multiplies two positive numbers
- * @argc: Argument count
- * @argv: Argument vector
- * Return: 0 on success, 98 on error
- */
+* main - Multiplies two positive numbers
+* @argc: Argument count
+* @argv: Argument vector
+* Return: 0 on success, 98 on error
+*/
 int main(int argc, char *argv[])
 {
 	int len1, len2, *result;
@@ -115,6 +117,7 @@ int main(int argc, char *argv[])
 	if (!result)
 	{
 		printf("Error\n");
+		free(result);
 		exit(98);
 	}
 
