@@ -1,56 +1,64 @@
 #include "main.h"
+#include <stdio.h>
 /**
-* my_strlen - calculates the length of a string.
-* @s: pointer to the string.
-* Return: length of the string.
-*/
-size_t my_strlen(char *s)
+ * main - copies the content of a file to another file
+ * @argc: argument count
+ * @argv: argument values
+ * Return: 0 on success, exits with error codes on failure
+ */
+int main(int argc, char *argv[])
 {
-	size_t len = 0;
+    int fd_from, fd_to;
+    ssize_t bytes_read, bytes_written;
+    char buffer[1024];
 
-	if (s == NULL)
-		return (0);
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
-/**
-* append_text_to_file - appends text at the end of a file.
-* @filename: pointer to the name of the file.
-* @text_content: pointer to the string to add to the end of the file.
-* Return: 1 on success, -1 on failure.
-*/
-int append_text_to_file(const char *filename, char *text_content)
-{
-	int fd;
+    if (argc != 3)
+    {
+        dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+        exit(97);
+    }
 
-	ssize_t bytes_written;
-	size_t len;
+    fd_from = open(argv[1], O_RDONLY);
+    if (fd_from == -1)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+        exit(98);
+    }
 
-	if (filename == NULL)
-		return (-1);
+    fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+    if (fd_to == -1)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+        exit(99);
+    }
 
-	/* Open existing file for writing in append mode */
-	fd = open(filename, O_WRONLY | O_APPEND);
-	if (fd == -1)
-		return (-1);
+    while ((bytes_read = read(fd_from, buffer, 1024)) > 0)
+    {
+        bytes_written = write(fd_to, buffer, bytes_read);
+        if (bytes_written != bytes_read)
+        {
+            dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+            exit(99);
+        }
+    }
 
-	/* If text_content is NULL, just check file exists */
-	if (text_content == NULL)
-	{
-		close(fd);
-		return (1);
-	}
+    if (bytes_read == -1)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+        exit(98);
+    }
 
-	len = my_strlen(text_content);
+    if (close(fd_from) == -1)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+        exit(100);
+    }
 
-	bytes_written = write(fd, text_content, len);
-	if (bytes_written != (ssize_t)len)
-	{
-		close(fd);
-		return (-1);
-	}
+    if (close(fd_to) == -1)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
+        exit(100);
+    }
 
-	close(fd);
-	return (1);
+    return (0);
 }
