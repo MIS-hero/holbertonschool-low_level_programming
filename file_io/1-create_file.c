@@ -7,15 +7,17 @@
 */
 int create_file(const char *filename, char *text_content)
 {
+	int fd;
+
+	ssize_t bytes_written = 0;
+
 	if (filename == NULL)
 		return (-1);
 
-	int fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
 	if (fd == -1)
 		return (-1);
-
-	ssize_t bytes_written = 0;
 
 	if (text_content != NULL)
 	{
