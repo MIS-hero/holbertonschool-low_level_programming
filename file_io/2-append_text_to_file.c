@@ -8,19 +8,21 @@
 int append_text_to_file(const char *filename, char *text_content)
 
 {
-		if (filename == NULL)
-			return (-1);
+	int fd;
+	ssize_t bytes_written = 0;
+	size_t len;
 
-		int fd = open(filename, O_WRONLY | O_APPEND);
+	if (filename == NULL)
+		return (-1);
 
-		if (fd == -1)
-			return (-1);
+	fd = open(filename, O_WRONLY | O_APPEND);
 
-		ssize_t bytes_written = 0;
+	if (fd == -1)
+		return (-1);
 
 		if (text_content != NULL)
 		{
-			size_t len = 0;
+			len = 0;
 
 			while (text_content[len] != '\0')
 				len++;
