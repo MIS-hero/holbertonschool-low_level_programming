@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
  * main - a program that copies the content of a file to another file
  * @ac: nb of arguments
